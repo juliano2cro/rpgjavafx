@@ -12,10 +12,10 @@
     <Label text="Combat Simulator" layoutX="250" layoutY="10" style="-fx-font-size: 20px;"/>
 
     <!-- Sélection des combattants -->
-    <Label text="Joueur 1 :" layoutX="20" layoutY="50"/>
+    <Label text="Joueur (Vous) :" layoutX="20" layoutY="50"/>
     <ComboBox fx:id="player1Box" layoutX="100" layoutY="45" prefWidth="150"/>
 
-    <Label text="Joueur 2 :" layoutX="300" layoutY="50"/>
+    <Label text="adversaire (IA) :" layoutX="300" layoutY="50"/>
     <ComboBox fx:id="player2Box" layoutX="380" layoutY="45" prefWidth="150"/>
 
     <!-- Actions du joueur 1 -->
