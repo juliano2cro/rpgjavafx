@@ -18,3 +18,14 @@ mais le temps n a pas permis de les implementer.
 
 toutes les fonctionnalites demandees sont toutefois presentes
 et demonstrables via le launcher.
+
+## Règles du jeu & comment jouer
+Chaque personnage possède des statistiques qui déterminent sa puissance et ses actions en combat.
+Lors d’un combat, le joueur choisit une action (attaquer, bloquer ou utiliser un pouvoir) 
+
+Le système de combat est comme le jeu du papier, cailloux et ciceaux
+attaque < pouvoir
+pouvoir < bloque
+bloque < attaque
+et le résultat est calculé automatiquement selon les règles du jeu.
+Le combat se déroule en tours jusqu’à ce qu’un personnage n’ait plus de points de vie ou que le nombre de tours maximum soit atteint qui est de tours.

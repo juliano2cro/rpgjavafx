@@ -217,17 +217,17 @@ public class Launcher {
     private static void us42_combat_journal() {
         title("us 4.2 journal");
 
-        BaseCharacterComponent p =
-                new BaseCharacterComponent(createCharacter("poire", "assassin", 100, 30, 10, 40));
-        BaseCharacterComponent b =
-                new BaseCharacterComponent(createCharacter("banane", "soldier", 100, 30, 10, 30));
+        BaseCharacterComponent pierre =
+                new BaseCharacterComponent(createCharacter("Pierre", "assassin", 100, 30, 10, 40));
+        BaseCharacterComponent bastien =
+                new BaseCharacterComponent(createCharacter("Bastien", "soldier", 100, 30, 10, 30));
 
         CombatService service = new CombatService();
         service.getObservable().addObserver(
                 System.out::println
         );
 
-        service.fight(p, b);
+        service.fight(pierre, bastien);
     }
 
     // helpers
