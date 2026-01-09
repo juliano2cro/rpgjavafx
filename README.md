@@ -1,31 +1,51 @@
-# rpg java project
+## RPG Java Project
 
-ce projet est une simulation de jeu rpg en java basee sur les principaux design patterns.
+Ce projet est une simulation RPG en Java basée sur les principaux design patterns.
 
-le programme permet :
-- la creation de personnages avec un builder
-- la centralisation des regles du jeu via un singleton
-- la validation des personnages
-- l ajout dynamique de capacites (decorator)
-- la persistance des personnages (dao)
-- l organisation des personnages en groupes hierarchiques (composite)
-- l execution d actions de jeu (command)
-- la simulation de combats simples
-- l historique et le journal de combat avec observer
+Toutes les fonctionnalités demandées sont présentes et peuvent être testées via le Launcher.
 
-une interface graphique avec javafx et une architecture mvc etaient prevues,
-mais le temps n a pas permis de les implementer.
+Fonctionnalités :
+- Création de personnages avec Builder
+- Règles centralisées via Singleton
+- Validation des personnages (nom, statistiques, unicité)
+- Ajout dynamique de capacités (Decorator)
+- Persistance des personnages (DAO)
+- Organisation en groupes hiérarchiques (Composite)
+- Exécution d’actions de jeu (Command)
+- Simulation de combats simples
+- Historique et journal de combat (Observer)
+- Interface graphique prévue (JavaFX, MVC)
+- Interface graphique
 
-toutes les fonctionnalites demandees sont toutefois presentes
-et demonstrables via le launcher.
 
-## Règles du jeu & comment jouer
-Chaque personnage possède des statistiques qui déterminent sa puissance et ses actions en combat.
-Lors d’un combat, le joueur choisit une action (attaquer, bloquer ou utiliser un pouvoir) 
+### Le projet contient 4 fenêtres principales :
 
-Le système de combat est comme le jeu du papier, cailloux et ciceaux
-attaque < pouvoir
-pouvoir < bloque
-bloque < attaque
-et le résultat est calculé automatiquement selon les règles du jeu.
-Le combat se déroule en tours jusqu’à ce qu’un personnage n’ait plus de points de vie ou que le nombre de tours maximum soit atteint qui est de tours.
+fenêtre créer personnage : Créer un personnage.
+fenêtre listes personnages : Affiches les personnages
+fenêtre equipes : Gestion des equipes et de l'armée
+fenêtre combat : Permet a deux personnages de s'affronter
+
+
+Règles du jeu
+
+Chaque personnage possède : HP, STR, INT, AGI.
+Les actions suivent la logique pierre-feuille-ciseaux :
+Attaque < Pouvoir
+Pouvoir < Bloquer
+Bloquer < Attaque
+Le combat dure un nombre maximum de tours (par défaut 5) ou jusqu’à ce qu’un personnage tombe à 0 HP.
+
+### Les programmes
+Launcher
+Launcher.main() permet de test et démonstration de toutes les fonctionnalités. Permet de vérifier le builder, DAO, combat, composite, decorator, etc. C’est une simulation console, utile pour développement et tests.
+
+MainApp (JavaFX)
+Application.launch(MainApp.class) permet de lancer l’interface graphique.
+
+
+### Comment jouer
+
+Créer un ou plusieurs personnages.
+Organiser les personnages en équipes et armées.
+Lancer un combat et choisir vos actions chaque tour.
+Observer le journal de combat et les résultats à la fin.

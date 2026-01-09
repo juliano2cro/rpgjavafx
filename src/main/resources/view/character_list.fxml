@@ -1,0 +1,26 @@
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+
+<VBox spacing="10" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.rpgfinal.controller.CharacterListController"
+      style="-fx-padding: 20;">
+
+    <Label text="Liste des personnages" style="-fx-font-size: 22px;"/>
+
+    <TableView fx:id="table" prefHeight="400">
+        <columns>
+            <TableColumn fx:id="nameCol" text="Nom" prefWidth="100"/>
+            <TableColumn fx:id="classCol" text="Classe" prefWidth="100"/>
+            <TableColumn fx:id="powerCol" text="Puissance" prefWidth="80"/>
+            <TableColumn fx:id="strCol" text="Force" prefWidth="60"/>
+            <TableColumn fx:id="intCol" text="Intelligence" prefWidth="80"/>
+            <TableColumn fx:id="agiCol" text="Agilité" prefWidth="60"/>
+            <TableColumn fx:id="abilitiesCol" text="Capacités spéciales" prefWidth="150"/>
+        </columns>
+    </TableView>
+
+    <Button text="Supprimer" onAction="#delete"/>
+</VBox>

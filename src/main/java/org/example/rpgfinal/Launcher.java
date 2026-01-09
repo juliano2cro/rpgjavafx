@@ -1,5 +1,6 @@
 package org.example.rpgfinal;
 
+import javafx.application.Application;
 import org.example.rpgfinal.dao.CharacterDao;
 import org.example.rpgfinal.model.ability.*;
 import org.example.rpgfinal.model.character.Character;
@@ -18,7 +19,7 @@ public class Launcher {
 
     public static void main(String[] args) {
 
-        title("start game simulation");
+        title("test des fonctionnalités");
 
         us11_builder_character_creation();
         us21_singleton_game_settings();
@@ -33,7 +34,10 @@ public class Launcher {
         us32_observer_sync();
         us42_combat_journal();
 
-        title("end simulation");
+        title("fin des test");
+
+        Application.launch(MainApp.class, args);
+
     }
 
     // us 1.1 builder
@@ -192,11 +196,11 @@ public class Launcher {
         service.fight(mathieu, margot);
     }
 
-    // us 3.1 mvc (stub console)
+    // us 3.1 mvc javafx
     private static void us31_mvc_stub() {
         title("us 3.1 mvc");
 
-        System.out.println("view controller model separation ready");
+        System.out.println("lancer main app");
     }
 
     // us 3.2 observer
@@ -249,4 +253,5 @@ public class Launcher {
         System.out.println(text);
         System.out.println("----------------------------");
     }
+
 }

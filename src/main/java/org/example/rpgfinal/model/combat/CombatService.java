@@ -76,7 +76,7 @@ public class CombatService {
                 (winner != null ? winner.getDescription() : "Égalité"));
 
         // Replay automatique
-        //history.replay(new CombatContext(player, bot));
+        history.replay(new CombatContext(player, bot));
 
         return new CombatResult(player, bot, winner);
     }

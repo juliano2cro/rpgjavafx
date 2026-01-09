@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+
+<VBox spacing="10"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.rpgfinal.controller.CreateCharacterController"
+      style="-fx-padding: 20;">
+
+    <!-- Titre -->
+    <Label text="Créer personnage"
+           style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+    <!-- Nom -->
+    <TextField fx:id="nameField" promptText="Nom du personnage"/>
+
+    <!-- Classe -->
+    <ComboBox fx:id="classBox" promptText="Classe"/>
+
+    <!-- Vie -->
+    <Label text="Points de vie : 100 (fixe)"/>
+
+    <!-- Stats -->
+    <Label text="Force"/>
+    <Spinner fx:id="strSpinner"/>
+
+    <Label text="Intelligence"/>
+    <Spinner fx:id="intSpinner"/>
+
+    <Label text="Agilité"/>
+    <Spinner fx:id="agiSpinner"/>
+
+    <!-- Capacités -->
+    <CheckBox fx:id="invisibilityBox" text="Invisibilité"/>
+    <CheckBox fx:id="telepathyBox" text="Télépathie"/>
+
+    <!-- Action -->
+    <Button text="Ajouter le personnage"
+            onAction="#createCharacter"/>
+</VBox>

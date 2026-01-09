@@ -1,5 +1,4 @@
-package org.example.rpgfinal;
-
+package org.example.rpgfinal.controller;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,16 +9,12 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        System.out.println(
-                getClass().getResource("/view/navigation.fxml")
-        );
-
         FXMLLoader loader = new FXMLLoader(
                 getClass().getResource("/view/navigation.fxml")
         );
 
-        Scene scene = new Scene(loader.load(), 800, 500);
-        stage.setTitle("RPG Combat Simulator");
+        Scene scene = new Scene(loader.load(), 900, 600);
+        stage.setTitle("RPG Final");
         stage.setScene(scene);
         stage.show();
     }

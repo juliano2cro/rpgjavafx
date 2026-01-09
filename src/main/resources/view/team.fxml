@@ -1,0 +1,64 @@
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.rpgfinal.controller.TeamController"
+      spacing="15"
+      style="-fx-padding: 20;">
+
+    <Label text="Gestion des équipes et des armées"
+           style="-fx-font-size: 24px;"/>
+
+    <!-- Création équipe -->
+    <HBox spacing="10">
+        <TextField fx:id="teamNameField" promptText="Nom de l'équipe"/>
+        <Button text="Créer équipe" onAction="#createTeam"/>
+    </HBox>
+
+    <HBox spacing="20">
+
+        <!-- Personnages -->
+        <VBox spacing="5">
+            <Label text="Personnages"/>
+            <ListView fx:id="characterList" prefWidth="200"/>
+        </VBox>
+
+        <!-- Boutons -->
+        <VBox spacing="10" alignment="CENTER">
+            <Button text="→ Ajouter à l'équipe" onAction="#addToTeam"/>
+            <Button text="← Retirer de l'équipe" onAction="#removeFromTeam"/>
+        </VBox>
+
+        <!-- Équipes -->
+        <VBox spacing="5">
+            <Label text="Équipe sélectionnée"/>
+            <ListView fx:id="teamMembersList" prefWidth="200"/>
+        </VBox>
+
+    </HBox>
+
+    <Separator/>
+
+    <!-- Armée -->
+    <HBox spacing="10">
+        <TextField fx:id="armyNameField" promptText="Nom de l'armée"/>
+        <Button text="Créer armée" onAction="#createArmy"/>
+    </HBox>
+
+    <HBox spacing="10">
+        <ListView fx:id="teamsList" prefWidth="200"/>
+        <Button text="Ajouter équipe à l'armée" onAction="#addTeamToArmy"/>
+    </HBox>
+
+    <!-- Log -->
+    <Label text="Journal"/>
+    <TextArea fx:id="logArea"
+              prefHeight="150"
+              editable="false"/>
+</VBox>
