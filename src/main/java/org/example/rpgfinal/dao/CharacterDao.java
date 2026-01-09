@@ -5,7 +5,10 @@ import org.example.rpgfinal.model.character.CharacterBuilder;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class CharacterDao implements Dao<Character> {
 
@@ -101,4 +104,28 @@ public class CharacterDao implements Dao<Character> {
             throw new RuntimeException("Erreur lors de la suppression du personnage", e);
         }
     }
+
+
+    public Set<String> findAllNames() {
+        Set<String> names = new HashSet<>();
+
+        String sql = "SELECT name FROM characters";
+
+        try (Connection conn = DriverManager.getConnection(DB_URL);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                names.add(rs.getString("name"));
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(
+                    "Erreur lors de la récupération des noms des personnages", e);
+        }
+
+        return names;
+    }
+
+
 }

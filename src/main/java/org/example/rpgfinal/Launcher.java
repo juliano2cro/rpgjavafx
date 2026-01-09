@@ -69,7 +69,7 @@ public class Launcher {
     private static void us23_character_validation() {
         title("us 2.3 validation");
         Character heroValid = createCharacter("naruto", "archer", 100, 30, 20, 10);
-        Character heroTest = createCharacter("Bobby", "archer", 100, 50, 50, 00);
+        Character heroTest = createCharacter("Bobby", "archer", 100, 50, 50, 0);
 
         String uniqueName = "tog";
         CharacterValidator validator1 = new NameNotEmptyValidator();
