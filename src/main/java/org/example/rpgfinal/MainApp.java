@@ -9,16 +9,15 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(
-                MainApp.class.getResource("/org/example/rpgfinal/view/main-view.fxml")
-        );
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/main-view.fxml"));
+        Scene scene = new Scene(loader.load(), 800, 600);
 
-        Scene scene = new Scene(loader.load());
-        scene.getStylesheets().add(
-                getClass().getResource("/org/example/rpgfinal/style/style.css").toExternalForm()
-        );
-        stage.setTitle("RPG Final");
+        stage.setTitle("RPG Character Manager");
         stage.setScene(scene);
         stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
     }
 }
