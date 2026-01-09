@@ -15,9 +15,10 @@ public class ObservableManager<T> {
         observers.remove(observer);
     }
 
-    public void notify(T source, String message) {
+    public void notify(String source, String message) {
         for (Observer obs : observers) {
             obs.update("[" + source + "] " + message);
         }
     }
+
 }

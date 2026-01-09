@@ -223,7 +223,9 @@ public class Launcher {
                 new BaseCharacterComponent(createCharacter("banane", "soldier", 100, 30, 10, 30));
 
         CombatService service = new CombatService();
-        service.addListener(System.out::println);
+        service.getObservable().addObserver(
+                System.out::println
+        );
 
         service.fight(p, b);
     }

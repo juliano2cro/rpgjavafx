@@ -3,24 +3,27 @@ package org.example.rpgfinal.model.combat;
 import org.example.rpgfinal.model.ability.BaseCharacterComponent;
 import org.example.rpgfinal.model.ability.CharacterComponent;
 import org.example.rpgfinal.model.history.CombatHistory;
+import org.example.rpgfinal.model.observable.ObservableManager;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class CombatService {
 
     private static final int MAX_TURNS = 5;
-    private final List<CombatListener> listeners = new ArrayList<>();
 
-    // Permet d'ajouter un observateur pour le journal du combat
-    public void addListener(CombatListener listener) {
-        listeners.add(listener);
+    private final ObservableManager<CombatService> observable =
+            new ObservableManager<>();
+
+    public ObservableManager<CombatService> getObservable() {
+        return observable;
     }
 
-    private void notify(String event) {
-        for (CombatListener listener : listeners) {
-            listener.onCombatEvent(event);
-        }
+    @Override
+    public String toString() {
+        return "Action";
     }
+
 
     public CombatResult fight(CharacterComponent player,
                               CharacterComponent bot) {
@@ -28,19 +31,19 @@ public class CombatService {
         CombatContext context = new CombatContext(player, bot);
         CombatHistory history = new CombatHistory();
 
-        notify("\n---- DÉBUT DU COMBAT ----");
+        observable.notify(this.toString(), "\n---- DÉBUT DU COMBAT ----");
 
         for (int turn = 1; turn <= MAX_TURNS; turn++) {
-            notify("\n---- TOUR " + turn + " ----");
+            observable.notify(this.toString(), "\n---- TOUR " + turn + " ----");
 
             CombatAction playerAction = PlayerInput.askPlayerAction();
             CombatAction botAction = AiCombatStrategy.chooseAction();
 
-            notify("Joueur : " + playerAction);
-            notify("Bot    : " + botAction);
+            observable.notify(this.toString(), context.getPlayerName() + " " + playerAction);
+            observable.notify(this.toString(), context.getBotName() + " " + botAction);
 
             if (playerAction == botAction) {
-                notify("Égalité, aucun dégât");
+                observable.notify(this.toString(), "Égalité, aucun dégât");
                 continue;
             }
 
@@ -58,8 +61,8 @@ public class CombatService {
             command.execute(context);
 
             // Notifier les changements de PV automatiquement
-            notify("Notification des vie de " + context.getPlayerName() + " HP : " + Math.max(context.getPlayerHp(), 0));
-            notify("Notification des vie de " + context.getBotName() + " HP : " + Math.max(context.getBotHp(), 0));
+            observable.notify(this.toString(), "Notif Pv : " + context.getPlayerName() + " HP : " + Math.max(context.getPlayerHp(), 0));
+            observable.notify(this.toString(), "Notif Pv : " + context.getBotName() + " HP : " + Math.max(context.getBotHp(), 0));
 
             // Stop si quelqu'un est mort
             if (context.getPlayerHp() <= 0 || context.getBotHp() <= 0) break;
@@ -69,7 +72,7 @@ public class CombatService {
                 context.getPlayerHp() > context.getBotHp() ? player :
                         context.getBotHp() > context.getPlayerHp() ? bot : null;
 
-        notify("\n🏆 Combat terminé ! Gagnant : " +
+        observable.notify(this.toString(), "\n Combat terminé ! Gagnant : " +
                 (winner != null ? winner.getDescription() : "Égalité"));
 
         // Replay automatique
